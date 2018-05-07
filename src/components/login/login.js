@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 export default class Login extends Component {
+
     render() {
+      console.log(this.props);
       const errorMessage = 'Sorry, the username and/or password is incorrect, please try again!';
       return (
         <div className="container">

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+// routing
+import { Route, Switch, Redirect } from 'react-router-dom';
+// main components
 import Login from './components/login/login';
 import Dashboard from './components/dashboard/dashboard';
+// static data 
 import user from './data/authentication';
+import airports from './data/airports';
+// main styles
 import './App.scss';
-
-// routing
-import { Link, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
@@ -36,11 +39,24 @@ class App extends Component {
     }
   }
 
+  renderCities = (props) => {
+    const cities = airports.map((airport,id) =>
+      <li key={id}>{airport}</li>
+    );
+    return cities;
+  }
+
   render() {
     return (
       <div className="App"> 
-      <Route path="/" exact component={Login}/>
-      <Route path="/dashboard" exat component={Dashboard}/>
+      <Switch>
+        <Route path="/" exact 
+         render={(props) => (<Login onClick={ this.onClick }
+         passwordChange={ e => this.onPasswordChange(e,'password') } 
+         usernameChange={ e => this.onUsernameChange(e,'username') } 
+         isFormValid = { this.state.isFormValid } {...props}/>)}/>
+        <Route path="/dashboard" exat component={Dashboard}/>
+      </Switch>
       </div>
     );
   }
