@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class Login extends Component {
     render() {
-      
+      const errorMessage = 'Sorry, the username and/or password is incorrect, please try again!';
       return (
         <div className="container">
             <div className="login-form">
@@ -25,11 +25,11 @@ export default class Login extends Component {
                   className="login-form__cta"
                   onClick={this.props.onClick}>login</button>
                   {
-                    (this.props.isLoggedIn) 
+                    (this.props.isValid) 
                     ? 
-                   ''
+                    <span className="login-form__error-message">{errorMessage}</span>
                     :
-                    <span class="login-form__error-message"> Sorry, the username and/or password is incorrect, please try again!</span>
+                  ''
                   }
         </div>
         </div>

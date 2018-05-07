@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Login from './components/login/login';
 import Dashboard from './components/dashboard/dashboard';
+import user from './data/authentication';
 import './App.scss';
 
 class App extends Component {
@@ -25,10 +26,10 @@ class App extends Component {
 
   onClick = e => {
   let { username, password } = this.state;
-    if (username === 'wnr' && password === 'wnr'){
-      this.setState((prevState) => ({ isLoggedIn: !prevState.isLoggedIn }));
+    if (username === user.username && password === user.password){
+      this.setState((prevState) => ({ isLoggedIn: !prevState.isLoggedIn, isValid: !prevState.isValid }));
     } else {
-      this.setState((prevState) => ({ isValid: !prevState.isValid }));
+      this.setState({ isValid: true });
     }
   }
 
