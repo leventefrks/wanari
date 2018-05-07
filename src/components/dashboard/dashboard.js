@@ -13,17 +13,23 @@ export default class Dashboard extends Component {
 
   queryFlightInfo = e => {
     e.preventDefault();
-    console.log('query flight info');
+    console.log('query flight info  --- ' + e.currentTarget.dataset.city);
   }
 
     render() {
       let cities = airports.map((airport,id) =>
         <li key={id} className="flight-info__list__item">
-          <a className="flight-info__list__item__name" onClick={this.queryFlightInfo}>{airport}</a>
+          <a 
+          className="flight-info__list__item__name" 
+          data-city={airport}
+          onClick={e => this.queryFlightInfo(e)}
+          >{airport}
+          </a>
         </li>  
     );
 
       return (
+        <div>
         <main className="main">
             <header className="header header--fixed">
             <a href="http://www.wanari.com"><img src={Logo} className="logo" alt="wanari-logo"/></a>
@@ -44,13 +50,13 @@ export default class Dashboard extends Component {
                  {cities}
                  </ul>
                 </div>
-        
-                <footer className="footer">
-                  <span className="footer__copyright">
-	              	Copyright 2018 |&nbsp; Levente Farkas
-	                </span>
-                </footer>
         </main>
+            <footer className="footer">
+            <span className="footer__copyright">
+            Copyright 2018 |&nbsp; Levente Farkas
+            </span>
+          </footer>
+          </div>
       );
     }
   }
