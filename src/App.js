@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // routing
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 // main components
 import Login from './components/login/login';
 import Dashboard from './components/dashboard/dashboard';
@@ -17,8 +17,7 @@ class App extends Component {
     this.state = {
       username: '',
       password: '',
-      isLoggedIn: false,
-      isFormValid: false
+      isFormInValid: false
     }
   }
 
@@ -33,13 +32,12 @@ class App extends Component {
   onClick = e => {
   let { username, password } = this.state;
     if (username === user.username && password === user.password){
-      this.setState( prevState => ({ isLoggedIn: !prevState.isLoggedIn, isFormValid: !prevState.isFormValid }));
+      this.setState( prevState => ({ isFormValid: !prevState.isFormInValid, username: '', password: '' }));
+      this.props.history.push('/dashboard'); 
     } else {
-      this.setState({ isFormValid: true });
+      this.setState({ isFormInValid: true });
     }
   }
-
-
 
   render() {
     return (
@@ -49,9 +47,8 @@ class App extends Component {
          render={ props => ( <Login onClick={ this.onClick }
          passwordChange={ e => this.onPasswordChange(e,'password') } 
          usernameChange={ e => this.onUsernameChange(e,'username') } 
-         isFormValid = { this.state.isFormValid } {...props}/>)}
+         isFormValid = { this.state.isFormInValid } {...props}/>)}
          />
-       
         <Route path="/dashboard" exact 
         render={ props => (<Dashboard {...props} />)}
         />
@@ -61,4 +58,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

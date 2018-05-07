@@ -7,13 +7,15 @@ export default class Dashboard extends Component {
     super(props);
     
     this.state = {
-    
+        chosenCity: ''
     }
   }
 
   queryFlightInfo = e => {
     e.preventDefault();
     console.log('query flight info  --- ' + e.currentTarget.dataset.city);
+    const chosenCity = e.currentTarget.dataset.city;
+    this.setState( prevState => ({ chosenCity: chosenCity})); 
   }
 
     render() {

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import Messages from '../../data/messages';
 
 export default class Login extends Component {
 
     render() {
-      console.log(this.props);
-      const errorMessage = 'Sorry, the username and/or password is incorrect, please try again!';
       return (
         <div className="container">
             <div className="login-form">
@@ -31,7 +30,7 @@ export default class Login extends Component {
                   {
                     (this.props.isFormValid) 
                     ? 
-                    <span className={"login-form__message " + (this.props.isFormValid ? 'login-form__message--error' : '')}>{errorMessage}</span>
+                    <span className={"login-form__message " + (this.props.isFormValid ? 'login-form__message--error' : '')}>{Messages}</span>
                     :
                     <span className="login-form__message"></span>
                   }
