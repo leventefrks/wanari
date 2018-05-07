@@ -20,7 +20,7 @@ export default class Dashboard extends Component {
                 </header>
 
                 <div className="flight-info">
-                   <h1 className="flight-info__title"></h1>
+                 
                 </div>
         
                 <footer className="footer">

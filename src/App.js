@@ -4,6 +4,9 @@ import Dashboard from './components/dashboard/dashboard';
 import user from './data/authentication';
 import './App.scss';
 
+// routing
+import { Link, Route, Switch } from 'react-router-dom';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -35,8 +38,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-      <Dashboard />
+      <div className="App"> 
+      <Route path="/" component={Login}/>
+      <Route path="/dashboard" component={Dashboard}/>
       </div>
     );
   }
