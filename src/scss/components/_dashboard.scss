@@ -1,60 +1,59 @@
-.main{
+.main {
     padding: 0 1rem;
 }
 
-.header{
+.header {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: $white;
-    box-shadow: 0 15px 40px rgba(0,0,0,.1);
-    &--fixed{
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .1);
+    &--fixed {
         position: fixed;
         top: 0;
         left: 0;
         bottom: auto;
         z-index: 1000;
     }
-
-    &__navigation{
-        &-list{
+    &__navigation {
+        &-list {
             display: flex;
             margin: 0 1rem;
             font-size: 1.1rem;
             font-weight: 800;
-            &__item{ 
+            &__item {
                 margin: 0 .7rem;
-                &-link{
+                &-link {
                     display: inline-block;
                     color: $nav-font;
                     text-decoration: none;
                     transition: all .24s ease-in;
-
-                    &:hover{
-                     transform: scale(1.2);
-                      }
+                    &:hover {
+                        transform: scale(1.2);
+                    }
                 }
             }
-        }     
+        }
     }
-    .logo{
+    .logo {
         width: 8rem;
         margin: 0 1rem 0 1rem;
         height: auto;
         transition: all .24s ease-in;
-        &:hover{
+        &:hover {
             transform: scale(1.2);
         }
     }
 }
-.flight-info{
+
+.flight-info {
     margin: 6rem auto;
     height: auto;
     max-width: 960px;
     background-color: $white;
-    box-shadow: 0 15px 40px rgba(0,0,0,.1);
-    &__title{
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .1);
+    &__title {
         padding: 1.5rem 0 1rem 0;
         font-size: 2.5rem;
         color: $font;
@@ -62,31 +61,32 @@
         text-align: center;
         text-transform: uppercase;
     }
-    &__list{
+    &__list {
         text-align: center;
         padding: 1em;
-        &__item{
-            padding: 2rem 0;
+        &__item {
+            padding: 1.7rem 0;
             border-bottom: 1px solid #eee;
-            &:last-child{
+            &:last-child {
                 border-bottom: none;
             }
-            &__name{
+            &__name {
                 display: inline-block;
                 text-decoration: none;
-                font-size: 1.5rem;
+                font-size: 1.3rem;
                 font-weight: 600;
                 color: $pink-cta;
                 cursor: pointer;
                 transition: all .24s ease-in;
-        &:hover{
-            transform: scale(1.2);
-        }
+                &:hover {
+                    transform: scale(1.1);
+                }
             }
         }
     }
 }
-.footer{
+
+.footer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,7 +94,7 @@
     width: 100%;
     background-color: $footer;
     color: $white;
-    &__copyright{
+    &__copyright {
         font-size: .8rem;
         opacity: .5;
     }
