@@ -9,9 +9,12 @@ export default class Dashboard extends Component {
             <a href="http://www.wanari.com"><img src={Logo} className="logo" alt="wanari-logo"/></a>
             <nav className="header__navigation">
               <ul className="header__navigation-list">
+              <li className="header__navigation-list__item">
+                <a className="header__navigation-list__item-link" href="https://github.com/leventefrks/wanari">source code</a>
+                  </li>
                 <li className="header__navigation-list__item">
                 <a className="header__navigation-list__item-link" href="http://www.leventefarkas.com">contact</a>
-                </li>
+                </li>    
                 </ul>
               </nav>
                 </header>
