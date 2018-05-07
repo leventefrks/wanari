@@ -1,8 +1,28 @@
 import React, { Component } from 'react';
 import Logo from '../../data/wanari-logo.png';
+import airports from '../../data/airports';
 
 export default class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+    
+    }
+  }
+
+  queryFlightInfo = e => {
+    e.preventDefault();
+    console.log('query flight info');
+  }
+
     render() {
+      let cities = airports.map((airport,id) =>
+        <li key={id} className="flight-info__list__item">
+          <a className="flight-info__list__item__name" onClick={this.queryFlightInfo}>{airport}</a>
+        </li>  
+    );
+
       return (
         <main className="main">
             <header className="header header--fixed">
@@ -20,7 +40,9 @@ export default class Dashboard extends Component {
                 </header>
 
                 <div className="flight-info">
-                 
+                  <ul className="flight-info__list">
+                 {cities}
+                 </ul>
                 </div>
         
                 <footer className="footer">

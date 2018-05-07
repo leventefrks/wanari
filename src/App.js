@@ -6,7 +6,7 @@ import Login from './components/login/login';
 import Dashboard from './components/dashboard/dashboard';
 // static data 
 import user from './data/authentication';
-import airports from './data/airports';
+//import airports from './data/airports';
 // main styles
 import './App.scss';
 
@@ -33,29 +33,28 @@ class App extends Component {
   onClick = e => {
   let { username, password } = this.state;
     if (username === user.username && password === user.password){
-      this.setState((prevState) => ({ isLoggedIn: !prevState.isLoggedIn, isFormValid: !prevState.isFormValid }));
+      this.setState( prevState => ({ isLoggedIn: !prevState.isLoggedIn, isFormValid: !prevState.isFormValid }));
     } else {
       this.setState({ isFormValid: true });
     }
   }
 
-  renderCities = (props) => {
-    const cities = airports.map((airport,id) =>
-      <li key={id}>{airport}</li>
-    );
-    return cities;
-  }
+
 
   render() {
     return (
       <div className="App"> 
       <Switch>
         <Route path="/" exact 
-         render={(props) => (<Login onClick={ this.onClick }
+         render={ props => ( <Login onClick={ this.onClick }
          passwordChange={ e => this.onPasswordChange(e,'password') } 
          usernameChange={ e => this.onUsernameChange(e,'username') } 
-         isFormValid = { this.state.isFormValid } {...props}/>)}/>
-        <Route path="/dashboard" exat component={Dashboard}/>
+         isFormValid = { this.state.isFormValid } {...props}/>)}
+         />
+       
+        <Route path="/dashboard" exact 
+        render={ props => (<Dashboard {...props} />)}
+        />
       </Switch>
       </div>
     );
@@ -63,12 +62,3 @@ class App extends Component {
 }
 
 export default App;
-
-/*
-<Login 
-        onClick={ this.onClick } 
-        passwordChange={ e => this.onPasswordChange(e,'password') } 
-        usernameChange={ e => this.onUsernameChange(e,'username') } 
-        isFormValid = { this.state.isFormValid } 
-      />
-      */
