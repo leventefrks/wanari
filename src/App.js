@@ -36,15 +36,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Login 
-        onClick={ this.onClick } 
-        passwordChange={ e => this.onPasswordChange(e,'password') } 
-        usernameChange={ e => this.onUsernameChange(e,'username') } 
-        isFormValid = { this.state.isFormValid } 
-      />
+      <Dashboard />
       </div>
     );
   }
 }
 
 export default App;
+
+/*
+<Login 
+        onClick={ this.onClick } 
+        passwordChange={ e => this.onPasswordChange(e,'password') } 
+        usernameChange={ e => this.onUsernameChange(e,'username') } 
+        isFormValid = { this.state.isFormValid } 
+      />
+      */

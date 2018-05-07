@@ -2,6 +2,7 @@ body{
     background-color: $login-bg;
     font-size: 1rem;
     font-family: 'Raleway', sans-serif;
+    text-rendering: optimizeLegibility;
 }
 
 .container{

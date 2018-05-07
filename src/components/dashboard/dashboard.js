@@ -15,8 +15,16 @@ export default class Dashboard extends Component {
                 </ul>
               </nav>
                 </header>
+
+                <div className="flight-info">
+                   <h1 className="flight-info__title"></h1>
+                </div>
+        
                 <footer className="footer">
-                    </footer>
+                  <span className="footer__copyright">
+	              	Copyright 2018 |&nbsp; Levente Farkas
+	                </span>
+                </footer>
         </main>
       );
     }
