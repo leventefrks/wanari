@@ -13,15 +13,15 @@ body{
 }
 
 .login-form{
-    width: 350px;
     display: flex;
     flex-direction: column;
+    width: 350px;
     background-color: $white;
     padding: 1.5rem;
     margin: .5rem;
     &__username, &__password{
         outline: none;
-        border: 2px solid $border;
+        border: .15rem solid $border;
         margin: 0.5rem 0;
         padding: 1rem;
         color: $font;
@@ -40,13 +40,16 @@ body{
             background-color: $pink-cta-hover;
         }
     }
-    &__error-message{
+    &__message{
         display: flex;
+        height: 1rem;
         text-align: center;
         margin-top: 1.5rem;
-        color: $error;
-        animation: bounce .3s infinite alternate;
-        animation-fill-mode: both;
+        &--error{
+            color: $error;
+            animation: bounce .3s infinite alternate;
+            animation-fill-mode: both;
+        }
     }
     @keyframes bounce {
         from {

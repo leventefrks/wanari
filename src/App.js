@@ -12,7 +12,7 @@ class App extends Component {
       username: '',
       password: '',
       isLoggedIn: false,
-      isValid: false
+      isFormValid: false
     }
   }
 
@@ -27,9 +27,9 @@ class App extends Component {
   onClick = e => {
   let { username, password } = this.state;
     if (username === user.username && password === user.password){
-      this.setState((prevState) => ({ isLoggedIn: !prevState.isLoggedIn, isValid: !prevState.isValid }));
+      this.setState((prevState) => ({ isLoggedIn: !prevState.isLoggedIn, isFormValid: !prevState.isFormValid }));
     } else {
-      this.setState({ isValid: true });
+      this.setState({ isFormValid: true });
     }
   }
 
@@ -37,10 +37,11 @@ class App extends Component {
     return (
       <div className="App">
       <Login 
-      onClick={this.onClick} 
-      passwordChange={e => this.onPasswordChange(e,'password')} 
-      usernameChange={e => this.onUsernameChange(e,'username')} 
-      isValid = {this.state.isValid} />
+        onClick={ this.onClick } 
+        passwordChange={ e => this.onPasswordChange(e,'password') } 
+        usernameChange={ e => this.onUsernameChange(e,'username') } 
+        isFormValid = { this.state.isFormValid } 
+      />
       </div>
     );
   }
