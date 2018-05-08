@@ -30,12 +30,14 @@ class App extends Component {
 
   onClick = e => {
     const {username, password} = this.state;
+    
     if (username === user.username && password === user.password) {
       this.setState(prevState => ({
         isFormValid: !prevState.isFormInValid,
         username: '',
         password: ''
       }));
+
       this.props.history.push('/dashboard');
     } else {
       this.setState({isFormInValid: true});

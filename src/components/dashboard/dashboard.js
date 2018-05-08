@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-// web app logo
+import Footer from '../dashboard/footer';
+import Modal from '../modal/modal';
 import Logo from '../../data/wanari-logo.png';
-// static data
 import airports from '../../data/airports';
-import baseOpenSkyApiUrl from '../../data/openskyApi';
+import openSkyAPI from '../../data/openskyApi';
 import axios from 'axios';
 import moment from 'moment';
 
@@ -12,45 +12,14 @@ export default class Dashboard extends Component {
     super(props);
 
     this.state = {
-      currentAirport: '',
-      currentIcao24: ''
-    }
+      isOpen: false
+    };
   }
 
-  queryFlightInfo = e => {
-    e.preventDefault();
-
-    const currentAirport = e.currentTarget.dataset.city;
-    const currentIcao24 = e.currentTarget.dataset.icao24;
-    //console.log('query flight info  --- ' + currentAirport + ' - ' + currentIcao24);
-    //console.log('start', moment());
-    //console.log('end', moment().subtract(8, 'hours'));
-    //console.log(moment(1517227200).format());
-
-    const startDate = moment(moment(), "M/D/YYYY H:mm").valueOf();
-    const endDate = moment(moment().subtract(8,'hours'), "M/D/YYYY H:mm").valueOf();
-
-    console.log(startDate);
-    console.log(endDate);
-    
-    console.log(moment(startDate).format());
-    console.log(moment(endDate).format());
-
-    const fullDepartureUrl = `${baseOpenSkyApiUrl}/flights/departure?airport=${currentIcao24}&begin=${startDate}&end=${endDate}`;
-    //const fullArrivalnUrl = `${baseOpenSkyApiUrl}/flights/arrival?airport=${currentIcao24}&begin=${startDate}&end=${endDate}`;
-
-    axios
-      .get(fullDepartureUrl)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  currentDate = () => {
-    let currentDate = new Date();
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
   }
 
   onLogout = () => {
@@ -58,6 +27,34 @@ export default class Dashboard extends Component {
       .props
       .history
       .push('/');
+  }
+
+  queryFlightInfo = e => {
+    e.preventDefault();
+
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+
+    const currentAirport = e.currentTarget.dataset.city;
+    const currentIcao24 = e.currentTarget.dataset.icao24;
+    console.log('query flight info  --- ' + currentAirport + ' - ' + currentIcao24);
+
+    const startDate = moment().unix();
+    const endDate = moment()
+      .subtract(1, 'hours')
+      .unix();
+
+    const url = `https://${openSkyAPI.username}:${openSkyAPI.password}@${openSkyAPI.baseUrl}/flights/arrival?airport=${currentIcao24}&begin=1517227200&end=1517230800`;
+
+    axios
+      .get(url)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
@@ -93,7 +90,7 @@ export default class Dashboard extends Component {
                 <li className="header__navigation-list__item">
                   <a
                     className="header__navigation-list__item-link"
-                    href="#"
+                    href=""
                     onClick={this.onLogout}>logout</a>
                 </li>
               </ul>
@@ -105,11 +102,10 @@ export default class Dashboard extends Component {
             </ul>
           </div>
         </main>
-        <footer className="footer">
-          <span className="footer__copyright">
-            Copyright 2018 |&nbsp; Levente Farkas
-          </span>
-        </footer>
+        <Footer/>
+        <Modal show={this.state.isOpen} onClose={this.toggleModal}>
+          
+        </Modal>
       </div>
     );
   }
